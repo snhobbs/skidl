@@ -1,28 +1,57 @@
-[tool.black]
-exclude = '''
-(
-  /(
-      \.eggs         # exclude a few common directories in the
-    | \.git          # root of the project
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | _build
-    | buck-out
-    | build
-    | dist
-  )/
-  | /skidl/libs/
-)
-'''
+[project]
+name = "skidl"
+version = "1.2.2"
+dynamic = ["dependencies"]
+authors = [{ name = 'Dave Vandenbout', email = 'devb@xess.com' }]
+requires-python = '>=3.8'
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Manufacturing",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)",
+]
+description = "A Python package for textually describing electronic circuit schematics."
+keywords = [
+    'kicad',
+    'EDA',
+    'PCBNEW',
+    "SKiDL",
+    "schematics",
+    "circuit",
+    "electronic",
+]
+readme = "README.rst"
 
-[tool.isort]
-multi_line_output=3
-include_trailing_comma=true
-force_grid_wrap=0
-use_parentheses=true
-line_length=88
-known_first_party=["skidl"]
-known_future_library=["skidl.py_2_3"]
-known_third_party=["pytest", "PySpice"]
+[project.license]
+file = "LICENSE"
+name = "MIT"
+
+[project.scripts]
+netlist_to_skidl = "skidl.scripts.netlist_to_skidl_main:main"
+
+[project.urls]
+github = "https://github.com/devbisme/skidl"
+Documentation = "https://devbisme.github.io/skidl"
+Source = "https://github.com/devbisme/skidl"
+Changelog = "https://github.com/devbisme/skidl/blob/master/HISTORY.rst"
+Tracker = "https://github.com/devbisme/skidl/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.setuptools.packages.find]
+where = ['src']
+
+[build-system]
+requires = ["setuptools>=70", "setuptools-scm>=8.0"]
