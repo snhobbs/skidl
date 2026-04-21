@@ -7,7 +7,6 @@ requires-python = '>=3.8'
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Manufacturing",
-    "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 2.7",
@@ -26,10 +25,6 @@ keywords = [
     "electronic",
 ]
 readme = "README.rst"
-
-[project.license]
-file = "LICENSE"
-name = "MIT"
 
 [project.scripts]
 netlist_to_skidl = "skidl.scripts.netlist_to_skidl_main:main"
